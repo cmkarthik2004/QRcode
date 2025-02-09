@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details QR Code Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>User Details QR Code Generator</h1>
+        
+        <p>Fill out the details below to generate a QR code:</p>
+        
+        <!-- Input fields for user details -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" placeholder="Enter your phone number">
+        
+        <label for="address">Address:</label>
+        <input type="text" id="address" placeholder="Enter your address">
+        
+        <button onclick="generateQR()">Generate QR Code</button>
+
+        <div id="imgBox">
+            <img src="" id="qrImage">
+        </div>
+    </div>
+
+    <script>
+        let qrImage = document.getElementById("qrImage");
+
+        // Function to generate the QR code with user details
+        function generateQR() {
+            // Get the values entered by the user
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let address = document.getElementById("address").value;
+
+            // Format the user details into a string
+            let userDetails = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}`;
+
+            // Generate the QR code with the formatted user details
+            qrImage.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(userDetails);
+            
+        }
+    </script>
+    
+</body>
+</html>
